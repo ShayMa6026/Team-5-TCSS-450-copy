@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="edu.uw.tcss450.chatphile.ui.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home">
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_weather"
+        android:name="edu.uw.tcss450.chatphile.ui.weather.WeatherFragment"
+        android:label="@string/title_weather"
+        tools:layout="@layout/fragment_weather">
+        <action
+            android:id="@+id/action_weatherFragment_to_mapsFragment2"
+            app:destination="@id/mapsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="edu.uw.tcss450.chatphile.ui.weather.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" >
+        <action
+            android:id="@+id/action_mapsFragment_to_weatherFragment2"
+            app:destination="@id/navigation_weather" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_chats"
+        android:name="edu.uw.tcss450.chatphile.ui.chat.ChatListFragment"
+        android:label="@string/title_chats" >
+        <action
+            android:id="@+id/action_navigation_chats_to_chatRoomFragment"
+            app:destination="@id/navigation_chat_room" />
+        <action
+            android:id="@+id/action_navigation_chats_to_createChatFragment"
+            app:destination="@id/createChatFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_contacts"
+        android:name="edu.uw.tcss450.chatphile.ui.contact.current.ContactFragment"
+        android:label="@string/title_contacts"
+        tools:layout="@layout/fragment_contact" >
+        <action
+            android:id="@+id/action_navigation_contacts_to_invitationFragment"
+            app:destination="@id/navigation_invitation" />
+        <action
+            android:id="@+id/action_navigation_contacts_to_addFriendFragment"
+            app:destination="@id/fragment_add_friend" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_invitation"
+        android:name="edu.uw.tcss450.chatphile.ui.contact.invites.recive.InvitationFragment"
+        android:label="@string/title_invitation"
+        tools:layout="@layout/fragment_invitation">
+        <action
+            android:id="@+id/action_invitationFragment_to_navigation_contacts"
+            app:destination="@id/navigation_contacts" />
+        <action
+            android:id="@+id/action_navigation_invitation_to_addFriendFragment"
+            app:destination="@id/fragment_add_friend" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_add_friend"
+        android:name="edu.uw.tcss450.chatphile.ui.contact.add.AddFriendFragment"
+        android:label="@string/title_add"
+        tools:layout="@layout/fragment_add_friend">
+        <action
+            android:id="@+id/action_addFriendFragment_to_navigation_contacts"
+            app:destination="@id/navigation_contacts" />
+        <action
+            android:id="@+id/action_addFriendFragment_to_navigation_invitation"
+            app:destination="@id/navigation_invitation" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createChatFragment"
+        android:name="edu.uw.tcss450.chatphile.ui.chat.CreateChatFragment"
+        android:label="@string/title_create_chat"
+        tools:layout="@layout/fragment_chat_create">
+        <action
+            android:id="@+id/action_createChatFragment_to_navigation_chat_room"
+            app:destination="@id/navigation_chat_room" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="edu.uw.tcss450.chatphile.ui.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_changeNameFragment"
+            app:destination="@id/changeNameFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_changePictureFragment"
+            app:destination="@id/changePictureFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/changeNameFragment"
+        android:name="edu.uw.tcss450.chatphile.ui.profile.ChangeNameFragment"
+        android:label="Change Your Username"
+        tools:layout="@layout/fragment_change_name" />
+
+    <fragment
+        android:id="@+id/changePictureFragment"
+        android:name="edu.uw.tcss450.chatphile.ui.profile.ChangePictureFragment"
+        android:label="Change Your Picture"
+        tools:layout="@layout/fragment_change_picture" />
+
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="edu.uw.tcss450.chatphile.ui.profile.ChangePasswordFragment"
+        android:label="Change Your Password"
+        tools:layout="@layout/fragment_change_password"/>
+
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="edu.uw.tcss450.chatphile.ui.setting.SettingFragment"
+        android:label="Setting"
+        tools:layout="@layout/fragment_setting" />
+
+    <fragment
+        android:id="@+id/navigation_chat_room"
+        android:name="edu.uw.tcss450.chatphile.ui.chat.room.ChatRoomFragment"
+        android:label="@string/title_chat_room"
+        tools:layout="@layout/fragment_chat_room" >
+        <argument
+            android:name="chatid"
+            app:argType="integer" />
+    </fragment>
+
+</navigation>
